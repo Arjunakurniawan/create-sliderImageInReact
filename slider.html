@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>learn react basic</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- REACT -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+
+    <!-- REACT FOR WEB -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+    <!-- BABEL -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      function Navbar() {
+        const images = [
+          "img1.jpg",
+          "img2.jpg",
+          "img3.jpg",
+          "img4.jpg",
+          "img5.jpg",
+        ];
+
+        const [image, setimage] = React.useState(0);
+
+        function prevImg() {
+          setimage(image - 1);
+        }
+
+        function nextImg() {
+          setimage(image + 1);
+        }
+
+        return (
+          <>
+            <img
+              src={images[image]}
+              style={{ widht: "500px", height: "500px" }}
+              onchange={images}
+            />
+            <br />
+            <button disabled={image == 0} onClick={prevImg}>
+              prev
+            </button>
+            <button disabled={image == images.length - 1} onClick={nextImg}>
+              next
+            </button>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <Navbar />
+          </>
+        );
+      }
+      //render react
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
